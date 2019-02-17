@@ -83,16 +83,16 @@
                         <rect class="input-domain" :x="domainX" y="-12" :width="domainWidth" height="8"/>
 
                         <circle class="input-point" :cx="inputX" cy="-8" r="4" />
-                        <path class="plot-line" :d="stepFunction"/>
+                        <path class="plot-line" :d="sigmoidPath"/>
                         
                         <line class="graph-highlight" :x1="inputX" :x2="inputX" y1="-7" y2="100" />
                         <line class="graph-highlight" :x1="0" :x2="203" :y1="output ? 0 : 100" :y2="output ? 0 : 100" />
                     </svg>
 
                     <div>
-                        <label for="bias">Bias b<sub>{{ label }}</sub> = {{ bias }}</label>
+                        <label for="bias">Bias b<sub>{{ label }}</sub> = {{ biasModel }}</label>
                         <br>
-                        <input id="bias" type="range" :min="minBias" :max="maxBias" step="0.1" v-model="bias" />
+                        <input id="bias" type="range" :min="minBias" :max="maxBias" step="0.1" v-model="biasModel" />
                     </div>
                 </div>
             </span>

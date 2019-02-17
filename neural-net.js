@@ -12,11 +12,21 @@ Vue.component('neuron-graph', {
             width: 200,
             minBias: -5,
             maxBias: 5,
+            biasModel: this.bias || 0
         };
     },
     computed: {
         stepFunction: function() {
-            return "M0 100H" + this.scaleX(this.bias) + "V0 H" + this.width;
+            return "M0 100H" + this.scaleX(this.biasModel) + "V0 H" + this.width;
+        },
+        sigmoidPath: function() {
+            var path = "M";
+            var bias = +this.biasModel;
+
+            for (var x = -10; x <= 10; x += 0.25) {
+                path += this.scaleX(x) + " " + (100 * (1 - sigmoid(x + bias))) + " ";
+            }
+            return path;
         },
         inputX: function() {
             return this.scaleX(this.input * this.weight);
@@ -28,7 +38,7 @@ Vue.component('neuron-graph', {
             return (this.width - this.domainWidth) * 0.5;
         },
         output: function() {
-            return this.input * this.weight > this.bias;
+            return this.input * this.weight > this.biasModel;
         }
     },
     methods: {
