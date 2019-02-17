@@ -1,54 +1,34 @@
 
 Vue.component('neuron-graph', {
     template: '#neuron-graph-el',
+    props: [
+        'input',
+        'weight',
+        'bias',
+        'label'
+    ],
     data: function() {
         return {
-
+            width: 200,
+            minBias: -5,
+            maxBias: 5,
         };
     },
-});
-
-var vm = new Vue({
-    el: '#neural-net',
-    data: {
-        width: 200,
-        minWeight: -5,
-        maxWeight: 5,
-        minBias: -5,
-        maxBias: 5,
-        'input1': 0.2,
-        'weight1a': 2,
-        'weight1b': 0,
-        bias1: 0,
-        bias2: 0,
-    },
     computed: {
-        result1a: function() {
-            return Math.round(this.input1 * this.weight1a * 1000) / 1000;
+        stepFunction: function() {
+            return "M0 100H" + this.scaleX(this.bias) + "V0 H" + this.width;
         },
-        result1b: function() {
-            return Math.round(this.input1 * this.weight1b * 1000) / 1000;
+        inputX: function() {
+            return this.scaleX(this.input * this.weight);
         },
-        min1: function() {
-            return -this.weight1a - this.bias1;
+        domainWidth: function() {
+            return Math.abs(this.weight) * this.width * 0.1;
         },
-        max1: function() {
-            return this.weight1a - this.bias1;
+        domainX: function() {
+            return (this.width - this.domainWidth) * 0.5;
         },
-        domain1width: function() {
-            return Math.abs(this.weight1a) * this.width * 0.1;
-        },
-        domain1x: function() {
-            return (this.width - this.domain1width) * 0.5;
-        },
-        point1x: function() {
-            return this.scaleX(this.input1 * this.weight1a);
-        },
-        stepFunction1: function() {
-            return "M0 100H" + this.scaleX(this.bias1) + "V0 H" + this.width;
-        },
-        active1: function() {
-            return this.input1 * this.weight1a > this.bias1;
+        output: function() {
+            return this.input * this.weight > this.bias;
         }
     },
     methods: {
@@ -56,8 +36,27 @@ var vm = new Vue({
             return this.width * 0.5 + (x * this.width * 0.05);
         }
     },
-    watch: {
-    }
+});
+
+var vm = new Vue({
+    el: '#neural-net',
+    data: {
+        width: 200,
+        input1: 0.2,
+        minWeight: -5,
+        maxWeight: 5,
+        weight1a: 2,
+        weight1b: -1,
+        bias1a: 1,
+        bias1b: 0,
+    },
+    computed: {
+    },
+    methods: {
+        round: function(x) {
+            return Math.round(x * 1000) / 1000;
+        }
+    },
 });
 
 
