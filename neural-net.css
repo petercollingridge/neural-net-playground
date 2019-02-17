@@ -33,6 +33,11 @@ input[type='range'] {
     fill: rgb(255, 0, 175);
 }
 
+.graph .input-line {
+    stroke: rgb(255, 0, 175);
+    stroke-width: 1;
+}
+
 .graph .plot-line {
     stroke: rgb(64, 95, 237);
     stroke-width: 2;
