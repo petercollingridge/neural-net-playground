@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Neural net playround</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+        <link rel="stylesheet" href="neural-net.css">
+    </head>
+
+    <body>
+
+        <h1>Exploring Neural Nets</h1>
+
+        <div id="neural-net">
+            <section class="layer">
+                <span class="input-1">
+                    <label for="input-1">Input x<sub>1</sub> = {{ input1 }}</label>
+                    <br>
+                    <input id="input-1" type="range" min="-1" max="1" step="0.01" v-model="input1" />
+                </span>
+            </section>
+
+            <section class="layer">
+                <span>
+                    <label for="weight-1a">Weight w<sub>1a</sub> = {{ weight1a }}</label>
+                    <br>
+                    <input id="weight-1a" type="range" min="-10" max="10" step="0.1" v-model="weight1a" />
+                    <br>
+                    <span>Result = {{ result1a }}</span>
+                </span>
+            
+                <span>
+                    <label for="weight-1b">Weight w<sub>1b</sub> = {{ weight1b }}</label>
+                    <br>
+                    <input id="weight-1b" type="range" min="-10" max="10" step="0.1" v-model="weight1b" />
+                    <br>
+                    <span>Result = {{ result1b }}</span>
+                </span>
+            </section>
+
+            <section class="layer">
+                <span>
+                    <svg class="graph" viewBox="-20 -15 225 130">
+                        <g class="gridlines">
+                            <path d="M-3 0 h203m0 50h-203m0 50h203"/>
+                            <path d="M0 0v103m20 0v-103m20 0v103m20 0v-103m20 0v103m20 0v-103m20 0v103m20 0v-103m20 0v103m20 0v-103m20 0v103"/>
+                        </g>
+                        <g class="labels">
+                            <g class="y-labels">
+                                <text x="-4" y="0">1</text> 
+                                <text x="-4" y="50">0.5</text>
+                                <text x="-4" y="100">0</text>
+                            </g>
+                            <g class="x-labels">
+                                <text x="0" y="105">-10</text>
+                                <text x="20" y="105">-8</text>
+                                <text x="40" y="105">-6</text>
+                                <text x="60" y="105">-4</text>
+                                <text x="80" y="105">-2</text>
+                                <text x="100" y="105">0</text>
+                                <text x="120" y="105">2</text>
+                                <text x="140" y="105">4</text>
+                                <text x="160" y="105">6</text>
+                                <text x="180" y="105">8</text>
+                                <text x="200" y="105">10</text>
+                            </g>
+                        </g>
+
+                        <rect class="input-domain" :x="bias1x" y="-12" :width="bias1width" height="10"/>
+                        <circle class="input-point" cx="" cy="-7" r="4" />
+
+                        <path class="plot-line" d="M0 100 h100 v-100 h100"/>
+                    </svg>
+                    <div>
+                        <label for="bias-1">Bias b<sub>1</sub> = {{ bias1 }}</label>
+                        <br>
+                        <input id="bias-1" type="range" min="-10" max="10" step="0.1" v-model="bias1" />
+                    </div>
+                </span>
+            
+                <span>
+                    <label for="weight-1b">Weight w<sub>1b</sub> = {{ weight1b }}</label>
+                    <br>
+                    <input id="weight-1b" type="range" min="-10" max="10" step="0.1" v-model="weight1b" />
+                    <br>
+                    <span>Result = {{ result1b }}</span>
+                </span>
+            </section>
+        </div>
+
+        <script src="neural-net.js"></script>
+
+    </body>
+</html>
