@@ -67,14 +67,18 @@
                                 <text x="180" y="105">8</text>
                                 <text x="200" y="105">10</text>
                             </g>
+                            <text x="205" :y="active1 ? 0 : 100" class="output">{{ active1 * 1 }}</text>
                         </g>
 
-                        <rect class="input-domain" :x="bias1x" y="-12" :width="bias1width" height="10"/>
-                        <line class="input-line" :x1="point1x" :x2="point1x" y1="-7" y2="100" />
-                        <circle class="input-point" :cx="point1x" cy="-7" r="4" />
+                        <rect class="input-domain" :x="domain1x" y="-12" :width="domain1width" height="8"/>
 
-                        <path class="plot-line" d="M0 100 h100 v-100 h100"/>
+                        <circle class="input-point" :cx="point1x" cy="-8" r="4" />
+                        <path class="plot-line" :d="stepFunction1"/>
+                        
+                        <line class="graph-highlight" :x1="point1x" :x2="point1x" y1="-7" y2="100" />
+                        <line class="graph-highlight" :x1="0" :x2="203" :y1="active1 ? 0 : 100" :y2="active1 ? 0 : 100" />
                     </svg>
+
                     <div>
                         <label for="bias-1">Bias b<sub>1</sub> = {{ bias1 }}</label>
                         <br>
@@ -83,8 +87,8 @@
                 </span>
             
                 <span>
-                        <svg class="graph" viewBox="-20 -15 225 130">
-                        </svg>
+                    <svg class="graph" viewBox="-20 -15 225 130">
+                    </svg>
                 </span>
             </section>
         </div>
