@@ -1,3 +1,13 @@
+
+Vue.component('neuron-graph', {
+    template: '#neuron-graph-el',
+    data: function() {
+        return {
+
+        };
+    },
+});
+
 var vm = new Vue({
     el: '#neural-net',
     data: {
@@ -49,3 +59,8 @@ var vm = new Vue({
     watch: {
     }
 });
+
+
+function sigmoid(x) {
+    return 1 / (1 + Math.exp(-x));
+}

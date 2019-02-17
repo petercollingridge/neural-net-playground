@@ -43,42 +43,7 @@
 
             <section class="layer">
                 <span>
-                    <svg class="graph" viewBox="-20 -15 225 130">
-                        <g class="gridlines">
-                            <path d="M-3 0 h203m0 50h-203m0 50h203"/>
-                            <path d="M0 0v103m20 0v-103m20 0v103m20 0v-103m20 0v103m20 0v-103m20 0v103m20 0v-103m20 0v103m20 0v-103m20 0v103"/>
-                        </g>
-                        <g class="labels">
-                            <g class="y-labels">
-                                <text x="-4" y="0">1</text> 
-                                <text x="-4" y="50">0.5</text>
-                                <text x="-4" y="100">0</text>
-                            </g>
-                            <g class="x-labels">
-                                <text x="0" y="105">-10</text>
-                                <text x="20" y="105">-8</text>
-                                <text x="40" y="105">-6</text>
-                                <text x="60" y="105">-4</text>
-                                <text x="80" y="105">-2</text>
-                                <text x="100" y="105">0</text>
-                                <text x="120" y="105">2</text>
-                                <text x="140" y="105">4</text>
-                                <text x="160" y="105">6</text>
-                                <text x="180" y="105">8</text>
-                                <text x="200" y="105">10</text>
-                            </g>
-                            <text x="205" :y="active1 ? 0 : 100" class="output">{{ active1 * 1 }}</text>
-                        </g>
-
-                        <rect class="input-domain" :x="domain1x" y="-12" :width="domain1width" height="8"/>
-
-                        <circle class="input-point" :cx="point1x" cy="-8" r="4" />
-                        <path class="plot-line" :d="stepFunction1"/>
-                        
-                        <line class="graph-highlight" :x1="point1x" :x2="point1x" y1="-7" y2="100" />
-                        <line class="graph-highlight" :x1="0" :x2="203" :y1="active1 ? 0 : 100" :y2="active1 ? 0 : 100" />
-                    </svg>
-
+                    <neuron-graph/>
                     <div>
                         <label for="bias-1">Bias b<sub>1</sub> = {{ bias1 }}</label>
                         <br>
@@ -92,6 +57,44 @@
                 </span>
             </section>
         </div>
+
+        <script type="text/x-template" id="neuron-graph-el">
+            <svg class="graph" viewBox="-20 -15 225 130">
+                <g class="gridlines">
+                    <path d="M-3 0 h203m0 50h-203m0 50h203"/>
+                    <path d="M0 0v103m20 0v-103m20 0v103m20 0v-103m20 0v103m20 0v-103m20 0v103m20 0v-103m20 0v103m20 0v-103m20 0v103"/>
+                </g>
+                <g class="labels">
+                    <g class="y-labels">
+                        <text x="-4" y="0">1</text> 
+                        <text x="-4" y="50">0.5</text>
+                        <text x="-4" y="100">0</text>
+                    </g>
+                    <g class="x-labels">
+                        <text x="0" y="105">-10</text>
+                        <text x="20" y="105">-8</text>
+                        <text x="40" y="105">-6</text>
+                        <text x="60" y="105">-4</text>
+                        <text x="80" y="105">-2</text>
+                        <text x="100" y="105">0</text>
+                        <text x="120" y="105">2</text>
+                        <text x="140" y="105">4</text>
+                        <text x="160" y="105">6</text>
+                        <text x="180" y="105">8</text>
+                        <text x="200" y="105">10</text>
+                    </g>
+                    <text x="205" :y="active1 ? 0 : 100" class="output">{{ active1 * 1 }}</text>
+                </g>
+
+                <rect class="input-domain" :x="domain1x" y="-12" :width="domain1width" height="8"/>
+
+                <circle class="input-point" :cx="point1x" cy="-8" r="4" />
+                <path class="plot-line" :d="stepFunction1"/>
+                
+                <line class="graph-highlight" :x1="point1x" :x2="point1x" y1="-7" y2="100" />
+                <line class="graph-highlight" :x1="0" :x2="203" :y1="active1 ? 0 : 100" :y2="active1 ? 0 : 100" />
+            </svg>
+        </script>
 
         <script src="neural-net.js"></script>
 
