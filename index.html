@@ -45,15 +45,15 @@
             </section>
 
             <section class="layer">
-                <neuron-graph :input="input1" :weight="weight1a" :bias="bias1a" :label="1"></neuron-graph>
-                <neuron-graph :input="input1" :weight="weight1b" :bias="bias1b" :label="2"></neuron-graph>
+                <neuron-graph function="sigmoid" :input="input1" :weight="weight1a" :bias="bias1a" :label="1"></neuron-graph>
+                <neuron-graph function="sigmoid" :input="input1" :weight="weight1b" :bias="bias1b" :label="2"></neuron-graph>
             </section>
         </div>
 
         <script type="text/x-template" id="neuron-graph-el">
             <span class="card">
                 <div class="card-body">
-                    <svg class="graph" viewBox="-20 -15 225 130">
+                    <svg class="graph" viewBox="-5 -15 225 130">
                         <g class="gridlines">
                             <path d="M-3 0 h203m0 50h-203m0 50h203"/>
                             <path d="M0 0v103m20 0v-103m20 0v103m20 0v-103m20 0v103m20 0v-103m20 0v103m20 0v-103m20 0v103m20 0v-103m20 0v103"/>
@@ -77,16 +77,16 @@
                                 <text x="180" y="105">8</text>
                                 <text x="200" y="105">10</text>
                             </g>
-                            <text x="205" :y="output ? 0 : 100" class="output">{{ output * 1 }}</text>
+                            <text x="205" :y="scaleY(output)" class="output">{{ round(output) }}</text>
                         </g>
 
                         <rect class="input-domain" :x="domainX" y="-12" :width="domainWidth" height="8"/>
 
                         <circle class="input-point" :cx="inputX" cy="-8" r="4" />
-                        <path class="plot-line" :d="sigmoidPath"/>
+                        <path class="plot-line" :d="path"/>
                         
                         <line class="graph-highlight" :x1="inputX" :x2="inputX" y1="-7" y2="100" />
-                        <line class="graph-highlight" :x1="0" :x2="203" :y1="output ? 0 : 100" :y2="output ? 0 : 100" />
+                        <line class="graph-highlight" :x1="0" :x2="203" :y1="scaleY(output)" :y2="scaleY(output)" />
                     </svg>
 
                     <div>
