@@ -11,6 +11,9 @@ var vm = new Vue({
         bias1b: 0,
     },
     methods: {
-        round: round
+        round: round,
+        setWeight: function(weight, value) {
+            this['weight' + weight] = value;
+        }
     },
 });

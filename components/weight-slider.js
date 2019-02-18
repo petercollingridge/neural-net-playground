@@ -15,4 +15,9 @@ Vue.component('weight-slider', {
     methods: {
         round: round
     },
+    watch: {
+        weight: function() {
+            this.$emit('update-weight', this.label, this.weight);
+        }
+    }
 });

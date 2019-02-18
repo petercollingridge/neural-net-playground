@@ -25,8 +25,8 @@
             </section>
 
             <section class="layer">
-                <weight-slider :input="input1" :start-weight="weight1a" label="1a"></weight-slider>
-                <weight-slider :input="input1" :start-weight="weight1b" label="1b"></weight-slider>
+                <weight-slider :input="input1" :start-weight="weight1a" label="1a" v-on:update-weight="setWeight"></weight-slider>
+                <weight-slider :input="input1" :start-weight="weight1b" label="1b" v-on:update-weight="setWeight"></weight-slider>
             </section>
 
             <section class="layer">
