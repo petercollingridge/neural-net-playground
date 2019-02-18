@@ -57,8 +57,6 @@ Vue.component('neuron-graph', {
         sigmoid: function(x) {
             return 1 / (1 + Math.exp(-x));
         },
-        round: function(x) {
-            return Math.round(x * 1000) / 1000;
-        }
+        round: round
     },
 });

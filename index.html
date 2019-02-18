@@ -25,23 +25,8 @@
             </section>
 
             <section class="layer">
-                <span class="card">
-                    <label class="slider-label" for="weight-1a">Weight w<sub>1a</sub> = {{ weight1a }}</label>
-                    <div class="card-body">
-                        <input id="weight-1a" type="range" :min="minWeight" :max="maxWeight" step="0.1" v-model="weight1a" />
-                        <br>
-                        <span>Result = {{ weight1a }} &times; <span class="highlight">{{ input1 }}</span> = {{ round(input1 * weight1a) }}</span>
-                    </div>
-                </span>
-            
-                <span class="card">
-                    <label class="slider-label" for="weight-1b">Weight w<sub>1b</sub> = {{ weight1b }}</label>
-                    <div class="card-body">
-                        <input id="weight-1b" type="range" :min="minWeight" :max="maxWeight" step="0.1" v-model="weight1b" />
-                        <br>
-                        <span>Result = {{ weight1b }} &times; <span class="highlight">{{ input1 }}</span> = {{ round(input1 * weight1b) }}</span>
-                    </div>
-                </span>
+                <weight-slider :input="input1" :start-weight="weight1a" label="1a"></weight-slider>
+                <weight-slider :input="input1" :start-weight="weight1b" label="1b"></weight-slider>
             </section>
 
             <section class="layer">
@@ -49,6 +34,17 @@
                 <neuron-graph function="sigmoid" :input="input1" :weight="weight1b" :bias="bias1b" :label="2"></neuron-graph>
             </section>
         </div>
+
+        <script type="text/x-template" id="weight-slider-el">
+            <span class="card">
+                <label class="slider-label" :for="'weight-' + label">Weight w<sub>{{ label }}</sub> = {{ weight }}</label>
+                <div class="card-body">
+                    <input :id="'weight-' + label" type="range" :min="minWeight" :max="maxWeight" step="0.1" v-model="weight" />
+                    <br>
+                    <span>Result = {{ weight }} &times; <span class="highlight">{{ input }}</span> = {{ round(input * weight) }}</span>
+                </div>
+            </span>
+        </script>
 
         <script type="text/x-template" id="neuron-graph-el">
             <span class="card">
@@ -98,6 +94,8 @@
             </span>
         </script>
 
+        <script src="utils.js"></script>
+        <script src="components/weight-slider.js"></script>
         <script src="components/neuron-graph.js"></script>
         <script src="neural-net.js"></script>
 

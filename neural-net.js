@@ -10,11 +10,7 @@ var vm = new Vue({
         bias1a: 1,
         bias1b: 0,
     },
-    computed: {
-    },
     methods: {
-        round: function(x) {
-            return Math.round(x * 1000) / 1000;
-        }
+        round: round
     },
 });
