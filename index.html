@@ -25,13 +25,23 @@
             </section>
 
             <section class="layer">
-                <weight-slider :input="input1" :start-weight="weight1a" label="1a"></weight-slider>
-                <weight-slider :input="input1" :start-weight="weight1b" label="1b"></weight-slider>
+                <weight-slider
+                    v-for="(weight, index) in weights[0]"
+                    :input="input1"
+                    :start-weight="weight"
+                    :label="'1, ' + (index + 1)">
+                </weight-slider>
             </section>
 
             <section class="layer">
-                <neuron-graph function="sigmoid" :input="input1" :weight="weight1a" :bias="bias1a" :label="1"></neuron-graph>
-                <neuron-graph function="sigmoid" :input="input1" :weight="weight1b" :bias="bias1b" :label="2"></neuron-graph>
+                <neuron-graph
+                    v-for="(bias, index) in biases"
+                    function="sigmoid"
+                    :input="input1"
+                    :weight="weights[0][index]"
+                    :bias="bias"
+                    :label="index + 1">
+                </neuron-graph>
             </section>
         </div>
 

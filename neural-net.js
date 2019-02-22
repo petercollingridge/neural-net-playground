@@ -5,10 +5,10 @@ var vm = new Vue({
         input1: 0.2,
         minWeight: -5,
         maxWeight: 5,
-        weight1a: 2,
-        weight1b: -1,
-        bias1a: 1,
-        bias1b: 0,
+        weights: [
+            [2, -1]
+        ],
+        biases: [1, 0],
     },
     methods: {
         round: round
