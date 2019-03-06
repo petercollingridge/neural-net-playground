@@ -5,15 +5,14 @@ var vm = new Vue({
         input1: 0.2,
         minWeight: -5,
         maxWeight: 5,
-        weight1a: 2,
-        weight1b: -1,
+        weights: [[2, -1]],
         bias1a: 1,
         bias1b: 0,
     },
     methods: {
         round: round,
-        setWeight: function(weight, value) {
-            this['weight' + weight] = value;
+        setWeight: function(i, j, value) {
+            this.weights[i][j] = value;
         },
         setInput: function(name, value) {
             this['input' + name] = value;

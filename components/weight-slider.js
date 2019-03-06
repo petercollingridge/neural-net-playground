@@ -8,6 +8,7 @@ Vue.component('weight-slider', {
     data: function() {
         return {
             weight: this.startWeight || 0,
+            indices: this.label.split(',').map(parseInt),
             minWeight: -5,
             maxWeight: 5,
         };
@@ -17,7 +18,7 @@ Vue.component('weight-slider', {
     },
     watch: {
         weight: function() {
-            this.$emit('update-weight', this.label, this.weight);
+            this.$emit('update-weight', this.indices[0], this.indices[1], this.weight);
         }
     }
 });
@@ -39,7 +40,7 @@ Vue.component('input-slider', {
         round: round
     },
     watch: {
-        weight: function() {
+        value: function() {
             this.$emit('update-input', this.label, this.value);
         }
     }
