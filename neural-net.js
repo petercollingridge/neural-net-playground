@@ -14,6 +14,9 @@ var vm = new Vue({
         round: round,
         setWeight: function(weight, value) {
             this['weight' + weight] = value;
+        },
+        setInput: function(name, value) {
+            this['input' + name] = value;
         }
     },
 });

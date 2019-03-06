@@ -21,3 +21,26 @@ Vue.component('weight-slider', {
         }
     }
 });
+
+Vue.component('input-slider', {
+    template: '#input-slider-el',
+    props: [
+        'startValue',
+        'label'
+    ],
+    data: function() {
+        return {
+            value: this.startValue || 0,
+            minValue: -1,
+            maxValue: 1,
+        };
+    },
+    methods: {
+        round: round
+    },
+    watch: {
+        weight: function() {
+            this.$emit('update-input', this.label, this.value);
+        }
+    }
+});
