@@ -20,13 +20,13 @@
             </section>
 
             <section class="layer">
-                <weight-slider :input="input1" :start-weight="weights" label="1a" v-on:update-weight="setWeight"></weight-slider>
-                <weight-slider :input="input1" :start-weight="weights" label="1b" v-on:update-weight="setWeight"></weight-slider>
+                <weight-slider :input="input1" :start-weight="weights[0][0]" label="0,0" v-on:update-weight="setWeight"></weight-slider>
+                <weight-slider :input="input1" :start-weight="weights[0][1]" label="0,1" v-on:update-weight="setWeight"></weight-slider>
             </section>
 
             <section class="layer">
-                <neuron-graph function="sigmoid" :input="input1" :weight="weight1a" :bias="bias1a" :label="1"></neuron-graph>
-                <neuron-graph function="sigmoid" :input="input1" :weight="weight1b" :bias="bias1b" :label="2"></neuron-graph>
+                <neuron-graph function="sigmoid" :input="input1" :weight="weights[0][0]" :bias="bias1a" :label="1"></neuron-graph>
+                <neuron-graph function="sigmoid" :input="input1" :weight="weights[0][1]" :bias="bias1b" :label="2"></neuron-graph>
             </section>
         </div>
 

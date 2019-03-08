@@ -12,7 +12,10 @@ var vm = new Vue({
     methods: {
         round: round,
         setWeight: function(i, j, value) {
-            this.weights[i][j] = value;
+            // Force Vue to notice change in weights
+            const weights = this.weights[i].slice(0);
+            weights[j] = value;
+            this.$set(this.weights, i, weights);
         },
         setInput: function(name, value) {
             this['input' + name] = value;

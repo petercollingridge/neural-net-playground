@@ -8,7 +8,7 @@ Vue.component('weight-slider', {
     data: function() {
         return {
             weight: this.startWeight || 0,
-            indices: this.label.split(',').map(parseInt),
+            indices: this.label.split(',').map(parseFloat),
             minWeight: -5,
             maxWeight: 5,
         };
