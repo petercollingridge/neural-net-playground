@@ -6,8 +6,7 @@ var vm = new Vue({
         minWeight: -5,
         maxWeight: 5,
         weights: [[2, -1]],
-        bias1a: 1,
-        bias1b: 0,
+        biases: [[1, 0]]
     },
     methods: {
         round: round,
